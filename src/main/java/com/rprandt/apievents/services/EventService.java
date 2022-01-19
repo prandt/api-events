@@ -19,5 +19,13 @@ public class EventService {
 		Optional<Event> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
 	}
+	
+	public void saveEvent(Event obj) {
+		if(obj == null) {
+			throw new ObjectNotFoundException("Object not found");
+		}
+		
+		repo.save(obj);
+	}
 
 }
