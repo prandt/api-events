@@ -26,5 +26,7 @@ public class Event implements Serializable{
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	private Date date;
 	private Address addressEvent;
+	private Integer totalTickets;
+	private Integer ticketsAvailable;
 	
 }
