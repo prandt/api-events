@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.rprandt.apievents.dto.Address;
+import com.rprandt.apievents.dto.AddressDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +25,7 @@ public class Event implements Serializable{
 	private String name;
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	private Date date;
-	private Address addressEvent;
+	private AddressDTO addressEvent;
 	private Integer totalTickets;
 	private Integer ticketsAvailable;
 	
