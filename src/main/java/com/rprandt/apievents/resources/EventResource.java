@@ -1,6 +1,7 @@
 package com.rprandt.apievents.resources;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rprandt.apievents.domain.Event;
+import com.rprandt.apievents.dto.EventDTO;
 import com.rprandt.apievents.services.EventService;
 
 @RestController
@@ -34,9 +36,10 @@ public class EventResource {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Event>> findAllEvents(){
+	public ResponseEntity<List<EventDTO>> findAllEvents(){
 		List<Event> list = service.findAllEvents();
-		return ResponseEntity.ok().body(list);
+		List<EventDTO> listDTO = list.stream().map(x -> new EventDTO(x)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
 	}
 
 }
