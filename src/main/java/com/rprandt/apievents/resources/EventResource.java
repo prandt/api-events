@@ -1,5 +1,7 @@
 package com.rprandt.apievents.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,12 @@ public class EventResource {
 	public ResponseEntity<Void> saveEvent(@RequestBody Event obj) {
 		service.saveEvent(obj);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Event>> findAllEvents(){
+		List<Event> list = service.findAllEvents();
+		return ResponseEntity.ok().body(list);
 	}
 
 }

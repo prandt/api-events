@@ -1,5 +1,6 @@
 package com.rprandt.apievents.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class EventService {
 		}
 		
 		repo.save(obj);
+	}
+	
+	public List<Event> findAllEvents(){
+		List<Event> list = repo.findAll();
+		return list;
 	}
 
 }
